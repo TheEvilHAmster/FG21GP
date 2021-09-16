@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4523752211399037794}
+  explotion: {fileID: 5049531358184171218, guid: 6d8cfc7760a519c4cb89cf6c64a0511b, type: 3}
+  healingBuff: {fileID: 3223529782587576749, guid: 7242c8aab447cdf4cbe17ce90db4d3b2, type: 3}
   speed: 0.5
   rigidBody: {fileID: 4523752211399037792}
   distanceFromPlayer: 5

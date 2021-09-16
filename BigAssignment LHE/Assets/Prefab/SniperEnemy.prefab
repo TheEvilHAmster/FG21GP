@@ -199,6 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79428653ceafd4245ae5e1ecb3f608e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explotion: {fileID: 5049531358184171218, guid: 6d8cfc7760a519c4cb89cf6c64a0511b, type: 3}
+  healingBuff: {fileID: 3223529782587576749, guid: 7242c8aab447cdf4cbe17ce90db4d3b2, type: 3}
   target: {fileID: 3016289851474147172, guid: 1ecc130bbba201c45893943c217e06ae, type: 3}
   speed: 2
   distanceFromPlayer: 5
