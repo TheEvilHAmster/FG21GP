@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float speed = 2f;
     [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private float health = 1f;
+    public int score;
+    
 
 
     void Update()
@@ -24,11 +28,22 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
+        Hit();
     }
 
     public void Hit()
     {
+        health--;
+        if (health <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    void Die()
+    {
+        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+score);
         Destroy(gameObject);
     }
 

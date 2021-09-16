@@ -148,5 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3016289851474147172, guid: 1ecc130bbba201c45893943c217e06ae, type: 3}
-  speed: 0.5
+  speed: 0.25
   rigidBody: {fileID: 6361553578346267353}
+  health: 1
+  score: 10

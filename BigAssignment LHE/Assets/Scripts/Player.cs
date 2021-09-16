@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] float offset = 0f;
     [SerializeField] private Transform player;
 
+    public float health = 2f;
+    [NonSerialized]private int score = 0;
+
     private Vector2 movement;
     private Vector2 mousePos;
 
@@ -23,8 +27,11 @@ public class Player : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
-    
-    
+
+    private void Start()
+    {
+        PlayerPrefs.SetInt("Score",0);
+    }
 
     private void FixedUpdate()
     {
@@ -34,7 +41,34 @@ public class Player : MonoBehaviour
         float angle = Mathf.Atan2(lokDir.y +player.position.y, lokDir.x+ player.position.x) * Mathf.Rad2Deg + offset;
         rigidBody.rotation = angle;
     }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Hit();
+    }
 
+    public void Hit()
+    {
+        health--;
+        Blink();
+        if (health <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    IEnumerator Blink()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
+    }
     private void Buffed(int buffType, float buffTime)
     {
 

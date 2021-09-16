@@ -240,6 +240,8 @@ MonoBehaviour:
   speed: 0.5
   rigidBody: {fileID: 4523752211399037792}
   distanceFromPlayer: 5
+  score: 50
+  health: 5
 --- !u!1 &4523752211500855391
 GameObject:
   m_ObjectHideFlags: 0

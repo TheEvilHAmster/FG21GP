@@ -9,7 +9,8 @@ public class SniperEnemy : MonoBehaviour
     [SerializeField] private float distanceFromPlayer = 5f;
     [SerializeField] private float offset = 0;
     [SerializeField] private Rigidbody2D rigidBody;
-    
+    [SerializeField] private float health = 2f;
+    public int score;
     
     
 
@@ -37,11 +38,21 @@ public class SniperEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
+        Hit();
     }
 
     public void Hit()
     {
+        health--;
+        if (health <= 0)
+        {
+            Die();
+        }
+
+    }
+    void Die()
+    {
+        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+score);
         Destroy(gameObject);
     }
 

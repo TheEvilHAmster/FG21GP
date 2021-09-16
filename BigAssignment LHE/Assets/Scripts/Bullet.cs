@@ -15,11 +15,12 @@ public class Bullet : MonoBehaviour
     {
         
         Enemy enemy = other.collider.GetComponent<Enemy>();
-        
+        Destroy(gameObject);
         if (ReferenceEquals(enemy, null)) {
             
             return;
         }
         enemy.Hit();
+        
     }
 }

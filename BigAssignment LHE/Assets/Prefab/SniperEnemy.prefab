@@ -204,3 +204,5 @@ MonoBehaviour:
   distanceFromPlayer: 5
   offset: 0
   rigidBody: {fileID: 4622561888492533300}
+  health: 2
+  score: 30

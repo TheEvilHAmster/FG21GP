@@ -101,6 +101,8 @@ MonoBehaviour:
   speed: 200
   rigidBody: {fileID: 8370606987559320422}
   dedTimer: 4.21
+  health: 1
+  score: 100
 --- !u!50 &8370606987559320422
 Rigidbody2D:
   serializedVersion: 4

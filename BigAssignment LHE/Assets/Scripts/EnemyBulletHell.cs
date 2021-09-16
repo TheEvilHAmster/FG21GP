@@ -8,8 +8,8 @@ public class EnemyBulletHell : MonoBehaviour
     [SerializeField] float speed = 0.2f;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private float distanceFromPlayer = 10f;
-    
-
+    public int score;
+    [SerializeField]private float health = 5f;
 
 
     void FixedUpdate()
@@ -26,17 +26,26 @@ public class EnemyBulletHell : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
+        Hit();
     }
 
     public void Hit()
     {
+        health--;
+        if (health <= 0)
+        {
+            Die();
+        }
+
+    }
+    void Die()
+    {
+        PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+score);
         Destroy(gameObject);
     }
 
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Debug.Log("bullethell spawned");
     }
 }
