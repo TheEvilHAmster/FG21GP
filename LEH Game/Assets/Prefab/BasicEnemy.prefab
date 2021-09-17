@@ -137,7 +137,7 @@ MonoBehaviour:
   target: {fileID: 3545761382539612878, guid: 1432964f2dbc25f4fbdd666b3c049654, type: 3}
   explotion: {fileID: 5049531358184171218, guid: 70d9f5f044fedcb4798bb37af921ac47, type: 3}
   healingBuff: {fileID: 3747922252790694812, guid: 511d5148494a30e4881e075ddc7d6239, type: 3}
-  speed: 0.5
+  speed: 0.2
   rigidBodyOfEnemy: {fileID: 8800711067594675723}
   health: 1
   score: 10

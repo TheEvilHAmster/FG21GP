@@ -25,7 +25,7 @@ public class DeathManager : MonoBehaviour
     void GameOver()
     {
         gameOver = true;
-        if (PlayerPrefs.GetInt("Score")>PlayerPrefs.GetInt("HighScore"))
+        if (PlayerPrefs.GetInt("Score")>PlayerPrefs.GetInt("HighScore")){}
             PlayerPrefs.SetInt("HighScore",PlayerPrefs.GetInt("Score"));
         
         StartCoroutine(LoadGameOver());
