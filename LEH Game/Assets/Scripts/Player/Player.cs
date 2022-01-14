@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+    public bool isAlive = true;
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] Camera cam;
@@ -71,7 +71,9 @@ public class Player : MonoBehaviour
     void Die()
     {
         PlayerPrefs.SetInt("Health",0);
-        Destroy(gameObject);
+        isAlive = false;
+        gameObject.SetActive(isAlive);
+
     }
 
     IEnumerator Blink()

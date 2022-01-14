@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FastEnemy : MonoBehaviour
 {
-    
+    private Player player;
     [SerializeField] private GameObject explotion, healingBuff;
     [SerializeField] private Transform target;
     [SerializeField] private float speed = 5f;
@@ -58,15 +58,21 @@ public class FastEnemy : MonoBehaviour
 
     private void Awake()
     {
-        if (!(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>() ==null))
+        player = GameObject.FindObjectOfType<Player>();
+
+        target = getTargetOfPlayer(player);
+
+    }
+
+    private Transform getTargetOfPlayer(Player obj)
+    {
+
+        if (obj == null)
         {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            return new RectTransform();
         }
-        else
-        {
-            target = new RectTransform();
-            target.position = new Vector3(0, 0, 0);
-        }
-        Destroy(gameObject, dedTimer);
+
+        
+        return obj.transform;
     }
 }

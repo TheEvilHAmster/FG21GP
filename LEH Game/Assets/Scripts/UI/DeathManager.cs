@@ -6,17 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class DeathManager : MonoBehaviour
 {
-    private GameObject player;
+    private Player player;
     private bool gameOver = false;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindObjectOfType<Player>();
     }
 
     private void Update()
     {
-        if (player==null && !gameOver)
+        if (player.isAlive == false && !gameOver)
         {
             GameOver();
         }

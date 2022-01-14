@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SniperEnemy : MonoBehaviour
 {
-    
+
+    private Player player;
     [SerializeField] private GameObject explotion, healingBuff;
     [SerializeField] private Transform target;
     [SerializeField] private float speed = 2f;
@@ -69,18 +70,25 @@ public class SniperEnemy : MonoBehaviour
         PlayerPrefs.SetInt("Score",PlayerPrefs.GetInt("Score")+score);
         Destroy(gameObject);
     }
-
+    
+    
     private void Awake()
     {
-        if (!(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>() ==null))
+        player = GameObject.FindObjectOfType<Player>();
+        target = getTargetOfPlayer(player);
+        
+    }
+    
+    private Transform getTargetOfPlayer(Player obj)
+    {
+
+        if (obj == null)
         {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            return new RectTransform();
         }
-        else
-        {
-            target = new RectTransform();
-            target.position = new Vector3(0, 0, 0);
-        }
+
+        
+        return obj.transform;
     }
     
 

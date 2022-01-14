@@ -5,22 +5,27 @@ using UnityEngine;
 
 public class HealingBuff : MonoBehaviour
 {
+    private Player player;
+
+    private void Awake()
+    {
+        player = GameObject.FindObjectOfType<Player>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>() == null))
+        if (!(player == null))
         {
-
-
-            if (other.gameObject.CompareTag("Player"))
+            if (player.isAlive)
             {
-                other.gameObject.GetComponent<Player>().AddHealth(1);
-                Destroy(gameObject);
+
+                if (other.CompareTag(player.tag))
+                {
+                    player.AddHealth(1);
+                    Destroy(gameObject);
+                }
             }
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
     }
+    
 }

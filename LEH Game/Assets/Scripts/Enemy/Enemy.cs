@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.GameCenter;
 using Random = UnityEngine.Random;
 
 
 public class Enemy : MonoBehaviour
 {
 
-    
+    private Player player;
     [SerializeField] Transform target;
     [SerializeField] private GameObject explotion, healingBuff;
     [SerializeField] float speed = 2f;
@@ -61,15 +62,21 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        if (!(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>() ==null))
+        player = GameObject.FindObjectOfType<Player>();
+
+        target = getTargetOfPlayer(player);
+
+    }
+
+    private Transform getTargetOfPlayer(Player obj)
+    {
+
+        if (obj == null)
         {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            return new RectTransform();
         }
-        else
-        {
-            target = new RectTransform();
-            target.position = new Vector3(0, 0, 0);
-        }
+
         
+        return obj.transform;
     }
 }

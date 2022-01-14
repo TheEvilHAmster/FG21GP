@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
+    private Player player;
     [SerializeField] private AnimationCurve _distribution;
     [SerializeField] private GameObject[] enemy;
     [SerializeField] private bool stopSpawning = false;
@@ -83,11 +84,18 @@ public class Spawner : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (player.isAlive == false)
+        {
+            gameObject.SetActive(player.isAlive);
+            return;
+        }
         InvokeRepeating("SpawnOutsideCameraView", spawnTime, spawnRate);
+        
     }
 
     private void Awake()
     {
+        player = GameObject.FindObjectOfType<Player>();
         camera = Camera.main;
         SpawnOutsideCameraView();
     }

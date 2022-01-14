@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBulletHell : MonoBehaviour
 {
+    private Player player;
     [SerializeField] Transform target;
     [SerializeField] private GameObject explotion, healingBuff;
     [SerializeField] float speed = 0.2f;
@@ -60,15 +61,20 @@ public class EnemyBulletHell : MonoBehaviour
 
     private void Awake()
     {
-        if (!(GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>() == null))
-        {
-            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        }
-        else
-        {
-            target = new RectTransform();
-            target.position = new Vector3(0, 0, 0);
-        }
+        player = GameObject.FindObjectOfType<Player>();
+        target = getTargetOfPlayer(player);
         
+    }
+    
+    private Transform getTargetOfPlayer(Player obj)
+    {
+
+        if (obj == null)
+        {
+            return new RectTransform();
+        }
+
+        
+        return obj.transform;
     }
 }
